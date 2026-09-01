@@ -1,0 +1,15 @@
+{
+  "name": "Bastogne — Assistant IA",
+  "short_name": "BastogneBot",
+  "description": "L'assistante IA officielle de la Commune de Bastogne — L'Ardenne en Capitale",
+  "start_url": "/BastogneBot/",
+  "scope": "/BastogneBot/",
+  "display": "standalone",
+  "background_color": "#0d2a56",
+  "theme_color": "#1B5FAD",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "/BastogneBot/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/BastogneBot/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
