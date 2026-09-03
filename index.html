@@ -1495,6 +1495,24 @@ window.addEventListener('load', function(){
   }
   _initLang();
   horairesInterval = setInterval(updateHoraires, 60000);
+
+  /* ── Mécanisme de secours : forcer l'affichage si rien n'apparaît ── */
+  setTimeout(function() {
+    var msgs = document.getElementById('messages');
+    if (!msgs) return;
+    var hasMsgRow = msgs.querySelectorAll('.msg-row').length > 0;
+    if (!hasMsgRow) {
+      /* Aucun message — forcer l'affichage */
+      var s = S[lang] || S.fr;
+      msgs.innerHTML = '<div class="ts" id="ts-label">' + s.ts + '</div>';
+      if (typeof window.addMsg === 'function') {
+        window.addMsg('bot', s.welcome);
+      }
+      setTimeout(function() {
+        if (typeof showSvcSelector === 'function') showSvcSelector();
+      }, 500);
+    }
+  }, 1200);
   /* Vérification statut quota au démarrage */
   setTimeout(function(){
     if(typeof window.exhaustedUntil !== 'undefined' && Date.now() < window.exhaustedUntil){
@@ -2168,7 +2186,7 @@ window.addEventListener('load', function(){ setTimeout(_pushRender, 600); });
 <div id="admin-splash">
   <div id="splash-bg"></div>
   <div class="splash-center">
-    <img src="jonquille.png" style="width:64px;display:block;margin:0 auto 16px;filter:drop-shadow(0 0 16px rgba(255,210,0,.7));animation:splashFloat 2s ease-in-out infinite alternate">
+    <img src="bastogne-logo.png" style="width:64px;display:block;margin:0 auto 16px;border-radius:12px;filter:drop-shadow(0 0 16px rgba(198,38,38,.7));animation:splashFloat 2s ease-in-out infinite alternate">
     <div class="splash-access">Accès accordé</div>
   </div>
 </div>
